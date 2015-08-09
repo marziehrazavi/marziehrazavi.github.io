@@ -1,2 +1,1 @@
-# marziehrazavi.github.io
-My Personal Homepage
+My personal homepage

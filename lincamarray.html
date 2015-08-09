@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<head>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="js/raphael-1.5.2-min.js"></script>
+  <script type="text/javascript" src="js/raphael.export.js"></script>
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="js/visualize_lin.js"></script>
+
+
+
+    <title>Linear Camera-Array</title>
+  <meta charset="utf-8">
+  <style>
+  @media only screen and (min-width: 160000px){
+    body {
+      background:transparent !important;
+      overflow:hidden !important;
+    }
+    html {
+      background: #fff;
+      background-attachment: fixed;
+      overflow:visible !important;
+    }
+    .ui-page {
+      width: 800px !important;
+      border:60px solid #111 !important;
+      margin: 50px auto !important;
+      position: relative !important;
+      border-right: 20px #222 outset !important;
+      border-left: 20px #000 outset !important;
+      border-radius:25px;
+      -webkit-border-radius:25px;
+      -moz-border-radius:25px;
+      overflow-y:scroll !important;
+      min-height:700px !important;
+      height:700px !important;
+      max-height:700px !important;
+      padding-bottom:0px;
+    }
+
+  }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div data-role="page">
+
+    <div align="center" data-role="header">
+      Linear Array Simulator
+    </div>
+
+    <div data-role="main" class="ui-content" id="mainpage">
+      <!-- <div data-role="controlgroup">-->
+        <label for="nc" align="center">No. of Cameras:</label>
+        <input type="range" name="nc" id="nc" value="2" min="2" max="100" align="center" >
+
+
+        <label for="ns" align="center">No. of Samples:</label>
+        <input type="range" name="ns" id="ns" value="4" min="4" max="100" step="2" align="center">
+
+        <label for="fov" align="center">Field of View: (degrees)</label>
+        <input type="range" name="fov" id="fov" value="30" min="1" max="179" align="center">
+
+
+        <label for="bl" align="center">Baseline: (meters)</label>
+        <input type="range" name="bl" id="bl" value="1" min="0.1" max="10" step="0.1" align="center">
+
+        <label for="zmax" align="center">Maximum Depth: (meters)</label>
+        <input type="range" name="zmax" id="zmax" value="5" min="0" max="100" align="center">
+
+        <label for="cw" align="center">Canvas Width: (pixels)</label>
+        <input type="range" name="cw" id="cw" value="500" min="100" max="1000" align="center">
+
+
+        <fieldset data-role="controlgroup" data-type="horizontal" align="center">
+
+            <label><input type="checkbox" name="dithered" id="dithered"/> Dithered</label>
+            <label><input type="checkbox" name="shuffled" id="shuffled"/> Shuffled</label>
+
+        </fieldset>
+
+
+
+
+      <!-- </div> -->
+
+
+
+
+      <div align="center" id="raph"> </div>
+      <div id="bar"></div>
+
+      <button align="center" class="ui-btn" name="sv" id="sv">Refresh</button>
+
+      <script>
+
+	  	$(function() {
+
+
+        var zmax=$( "#zmax" ).val();
+
+
+        var paperWidth=Math.min(Math.floor($( "#mainpage" ).height()*0.85),900);
+        $( "#cw" ).val(Math.floor(paperWidth/1.5));
+        var paperHeight=parseInt(zmax)*100;
+
+        var paper = Raphael("raph", paperWidth, paperHeight);
+        //paper.clear();
+
+        DrawLinCam(paper);
+    		$( "#nc" ).on( 'change', function( event ) {
+    			console.log('NC Changed '+nc);
+    			DrawLinCam(paper);
+    		});
+			$( "#ns" ).on( 'change', function( event ) {
+    			console.log('NS Changed '+nc);
+    			DrawLinCam(paper);
+    		});
+
+            $( "#fov" ).on( 'change', function( event ) {
+    			console.log('FoV Changed '+nc);
+    			DrawLinCam(paper)
+    		});
+
+        $( "#zmax" ).on( 'change', function( event ) {
+        //  console.log('Ra Changed '+$( "#range-1a" ).val());
+          DrawLinCam(paper)
+        });
+        $( "#bl" ).on( 'change', function( event ) {
+          //console.log('Rb Changed '+$( "#range-1b" ).val());
+          DrawLinCam(paper)
+        });
+
+        $( "#cw" ).on( 'change', function( event ) {
+          //console.log('Rb Changed '+$( "#range-1b" ).val());
+          DrawLinCam(paper)
+        });
+
+
+
+
+        $( "#dithered" ).on( 'change', function( event ) {
+    			console.log('DI Changed '+nc);
+    			DrawLinCam(paper);
+    		});
+            $( "#shuffled" ).on( 'change', function( event ) {
+    			console.log('RN Changed '+nc);
+    			DrawLinCam(paper);
+    		});
+
+
+			 $( "#sv" ).on( 'click', function( event ) {
+    			console.log('Clicked '+nc);
+    			DrawLinCam(paper);
+
+          //var svg = paper.toSVG();
+
+          //document.getElementById('bar').innerHTML = svg;
+
+    		});
+
+
+		});
+      </script>
+
+    </div>
+
+    <div align="center" data-role="footer">
+      Provided by LCAV@EPFL
+    </div>
+
+
+
+
+</body>
