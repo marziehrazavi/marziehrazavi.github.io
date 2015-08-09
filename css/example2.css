@@ -1,0 +1,89 @@
+/* Export block */
+.infoscience_export{
+    color: black;
+	font-family:Verdana,Helvetica,Arial,Geneva,Swiss,SunSans-Regular,sans-serif;
+	font-size: 1em;
+}
+
+/* first level heading (e.g. doctype) */
+.infoscience_header1 {
+    border-bottom: 1px solid rgb(205,204,205);
+	color: rgb(203,70, 10);
+	font-family; Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    padding-left: 4px;
+    margin-bottom: 15px;
+}
+
+/* record itself (div) */
+.infoscience_data {
+    background-image: url('../img/list-item-square.gif');
+    background-repeat: no-repeat;
+    background-position: 0px 0.5em;
+    padding-left: 15px;
+	margin: 0 0 25px 20px;
+}
+
+/* title of publication, short format */
+span.infoscience_title {
+}
+
+/* Name, place and date of conference */
+.infoscience_conference{
+}
+
+/* series */
+.infoscience_series{
+}
+
+/* list of authors */
+.infoscience_authors{
+}
+
+/* single author */
+.infoscience_author{
+}
+
+/* Journal, proceedings, book in case of book chapter*/
+.infoscience_host{
+}
+span.infoscience_host{
+	font-style: italic;
+}
+
+/* Links under publication */
+.infoscience_links{
+    line-height:1em;
+    float: right;
+    margin: 0px;
+}
+.infoscience_links a:link {
+    text-decoration: none;
+    color: rgb(8,76,153);
+}
+.infoscience_links a:hover{
+    text-decoration: underline
+}
+
+/* Link to detailed record */
+.infoscience_link_detailed{
+}
+
+/* link to fulltext */
+.infoscience_link_fulltext{
+}
+
+/* Link to official version (using DOI) */
+.infoscience_link_official{
+}
+
+/* link to bibtex format */
+.infoscience_link_bibtex{
+}
+
+/* link to endnote format */
+.infoscience_link_endnote{
+}

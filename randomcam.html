@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<head>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="js/raphael-1.5.2-min.js"></script>
+  <script type="text/javascript" src="js/raphael.export.js"></script>
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+
+  <script src="js/jquery.lcnCircleRangeSelect.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="js/visualize_rand.js"></script>
+  <script src="js/jquery.lcnCircleRangeSelect.js"></script>
+
+  <link rel="stylesheet" href="css/jquery.lcnCircleRangeSelect.css">
+    <title>Random Camera Network</title>
+  <meta charset="utf-8">
+  <style>
+  @media only screen and (min-width: 160000px){
+    body {
+      background:transparent !important;
+      overflow:hidden !important;
+    }
+    html {
+      background: #fff;
+      background-attachment: fixed;
+      overflow:visible !important;
+    }
+    .ui-page {
+      width: 800px !important;
+      border:60px solid #111 !important;
+      margin: 50px auto !important;
+      position: relative !important;
+      border-right: 20px #222 outset !important;
+      border-left: 20px #000 outset !important;
+      border-radius:25px;
+      -webkit-border-radius:25px;
+      -moz-border-radius:25px;
+      overflow-y:scroll !important;
+      min-height:700px !important;
+      height:700px !important;
+      max-height:700px !important;
+      padding-bottom:0px;
+    }
+
+  }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div data-role="page">
+
+    <div align="center" data-role="header">
+      Random Camera Network Simulation
+    </div>
+
+    <div data-role="main" class="ui-content" id="mainpage">
+      <!-- <div data-role="controlgroup">-->
+        <label for="nc" align="center">No. of Cameras:</label>
+        <input type="range" name="nc" id="nc" value="9" min="0" max="100" align="center" >
+
+
+        <label for="ns" align="center">No. of Pixels Per Camera:</label>
+        <input type="range" name="ns" id="ns" value="5" min="1" max="100" align="center">
+
+        <label for="fov" align="center">Field of View: (degrees)</label>
+        <input type="range" name="fov" id="fov" value="30" min="1" max="179" align="center">
+
+        <label for="sw" align="center">Sensor Width: (% of the room side)</label>
+        <input type="range" name="sw" id="sw" value="20" min="1" max="200" align="center">
+
+        <div data-role="rangeslider" style="display:none">
+          <label for="range-1a" align="center" style="display:none">Angular Baseline: (degrees)</label>
+          <input name="range-1a" id="range-1a" min="0" max="360" value="0" type="range" />
+          <label for="range-1b" align="center" style="display:none">Range on the circle:</label>
+          <input name="range-1b" id="range-1b" min="0" max="360" value="360" type="range" />
+        </div>
+        <div align="center" style="display:none">
+          <input type="text" class="circle-range-select" value="0;360" id="cira" name="cira"/>
+
+        </div>
+        <fieldset data-role="controlgroup" data-type="horizontal" align="center">
+          <input type="radio" name="proj" id="proj0" value="choice-1"  />
+          <label for="proj0">Parallel</label>
+          <input type="radio" name="proj" id="proj1" value="choice-2"  checked="checked" />
+          <label for="proj1">Pinhole</label>
+
+            <label><input type="checkbox" name="dithered" id="dithered"/> Dithered</label>
+            <label style="display:none"><input type="checkbox" name="shuffled" id="shuffled" style="display:none"/> Shuffled</label>
+
+        </fieldset>
+
+
+      <button align="center" class="ui-btn" name="sv" id="sv">Refresh</button>
+
+      <div align="center" id="raph"> </div>
+      <div id="bar"></div>
+
+      <script>jQuery('input.circle-range-select').lcnCircleRangeSelect();</script>
+
+      <script>
+
+	  	$(function() {
+
+	  		var dim=Math.min(Math.floor($( "#mainpage" ).width()*0.65),600);
+			  var rad=dim/2.1;
+
+	  		var paper = Raphael("raph", dim, dim);
+
+
+        DrawRotCam(paper,dim,rad);
+    		$( "#nc" ).on( 'change', function( event ) {
+    			console.log('NC Changed '+nc);
+    			DrawRotCam(paper,dim,rad);
+    		});
+			$( "#ns" ).on( 'change', function( event ) {
+    			console.log('NS Changed '+nc);
+    			DrawRotCam(paper,dim,rad);
+    		});
+
+            $( "#fov" ).on( 'change', function( event ) {
+    			console.log('FoV Changed '+nc);
+    			DrawRotCam(paper,dim,rad)
+    		});
+        $( "#sw" ).on( 'change', function( event ) {
+          console.log('Sw Changed '+nc);
+          DrawRotCam(paper,dim,rad);
+        });
+        $( "#sr" ).on( 'change', function( event ) {
+          console.log('SR Changed '+nc);
+          DrawRotCam(paper,dim,rad);
+        });
+
+        $( "#range-1a" ).on( 'change', function( event ) {
+        //  console.log('Ra Changed '+$( "#range-1a" ).val());
+          DrawRotCam(paper,dim,rad)
+        });
+        $( "#range-1b" ).on( 'change', function( event ) {
+          //console.log('Rb Changed '+$( "#range-1b" ).val());
+          DrawRotCam(paper,dim,rad)
+        });
+        $( "#cira" ).on( 'change', function( event ) {
+          console.log('Cira Changed '+$( "#cira" ).val());
+          DrawRotCam(paper,dim,rad)
+        });
+
+            $( "#proj0" ).on( 'change', function( event ) {
+    			console.log('PP Changed '+nc);
+    			DrawRotCam(paper,dim,rad)
+    		});
+            $( "#proj1" ).on( 'change', function( event ) {
+    			console.log('OP Changed '+nc);
+    			DrawRotCam(paper,dim,rad)
+    		});
+
+
+
+            $( "#dithered" ).on( 'change', function( event ) {
+    			console.log('DI Changed '+nc);
+    			DrawRotCam(paper,dim,rad);
+    		});
+            $( "#shuffled" ).on( 'change', function( event ) {
+    			console.log('RN Changed '+nc);
+    			DrawRotCam(paper,dim,rad);
+    		});
+
+
+			 $( "#sv" ).on( 'click', function( event ) {
+    			console.log('Clicked '+nc);
+    			DrawRotCam(paper,dim,rad);
+
+          //var svg = paper.toSVG();
+
+          //document.getElementById('bar').innerHTML = svg;
+
+    		});
+
+
+		});
+      </script>
+
+    </div>
+
+    <div align="center" data-role="footer">
+      Provided by LCAV@EPFL
+    </div>
+
+
+
+
+</body>

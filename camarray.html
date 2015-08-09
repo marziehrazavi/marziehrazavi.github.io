@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<head>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="js/raphael-1.5.2-min.js"></script>
+  <script type="text/javascript" src="js/raphael.export.js"></script>
+
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="js/jquery.lcnCircleRangeSelect.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="js/visualize.js"></script>
+  <script src="js/jquery.lcnCircleRangeSelect.js"></script>
+
+  <link rel="stylesheet" href="css/jquery.lcnCircleRangeSelect.css">
+    <title>Camera Array</title>
+  <meta charset="utf-8">
+  <style>
+  @media only screen and (min-width: 160000px){
+    body {
+      background:transparent !important;
+      overflow:hidden !important;
+    }
+    html {
+      background: #fff;
+      background-attachment: fixed;
+      overflow:visible !important;
+    }
+    .ui-page {
+      width: 800px !important;
+      border:60px solid #111 !important;
+      margin: 50px auto !important;
+      position: relative !important;
+      border-right: 20px #222 outset !important;
+      border-left: 20px #000 outset !important;
+      border-radius:25px;
+      -webkit-border-radius:25px;
+      -moz-border-radius:25px;
+      overflow-y:scroll !important;
+      min-height:700px !important;
+      height:700px !important;
+      max-height:700px !important;
+      padding-bottom:0px;
+    }
+
+  }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div data-role="page">
+
+    <div align="center" data-role="header">
+      Camera Array Simulator
+    </div>
+
+    <div data-role="main" class="ui-content" id="mainpage">
+      <!-- <div data-role="controlgroup">-->
+
+        <label for="nc" align="center">No. of Cameras:</label>
+        <input type="range" name="nc" id="nc" value="12" min="0" max="100" align="center" >
+
+
+        <label for="ns" align="center">No. of Samples:</label>
+        <input type="range" name="ns" id="ns" value="5" min="1" max="100" align="center">
+
+        <label for="fov" align="center">Field of View: (degrees)</label>
+        <input type="range" name="fov" id="fov" value="30" min="1" max="179" align="center">
+
+
+        <div data-role="rangeslider" style="display:none" >
+          <label for="range-1a" align="center">Angular Baseline: (degrees)</label>
+          <input name="range-1a" id="range-1a" min="0" max="360" value="0" type="range" />
+          <label for="range-1b" align="center">Range on the circle:</label>
+          <input name="range-1b" id="range-1b" min="0" max="360" value="360" type="range" />
+        </div>
+
+        <div align="center">
+          <input type="text" class="circle-range-select" value="0;360" id="cira" name="cira"/>
+
+        </div>
+
+        <fieldset data-role="controlgroup" data-type="horizontal" align="center">
+          <input type="radio" name="proj" id="proj0" value="choice-1"  checked="checked"/>
+          <label for="proj0">Parallel</label>
+          <input type="radio" name="proj" id="proj1" value="choice-2"   />
+          <label for="proj1">Pinhole</label>
+
+            <label><input type="checkbox" name="dithered" id="dithered"/> Dithered</label>
+            <label><input type="checkbox" name="shuffled" id="shuffled"/> Shuffled</label>
+
+        </fieldset>
+
+
+
+
+      <!-- </div> -->
+
+
+
+
+      <div align="center" id="raph"> </div>
+      <div id="bar"></div>
+
+      <button align="center" class="ui-btn" name="sv" id="sv">Refresh</button>
+
+
+    </div>
+
+    <script>jQuery('input.circle-range-select').lcnCircleRangeSelect();</script>
+    <script>
+
+    $(function() {
+      var dim=Math.min(Math.floor($( "#mainpage" ).width()*0.65),400);
+      var rad=dim/4;
+      var paper = Raphael("raph", dim, dim);
+      Draw(paper,dim,rad);
+      $( "#nc" ).on( 'change', function( event ) {
+        console.log('NC Changed '+nc);
+        Draw(paper,dim,rad);
+      });
+      $( "#ns" ).on( 'change', function( event ) {
+        console.log('NS Changed '+nc);
+        Draw(paper,dim,rad);
+      });
+
+      $( "#fov" ).on( 'change', function( event ) {
+        console.log('FoV Changed '+nc);
+        Draw(paper,dim,rad)
+      });
+      $( "#range-1a" ).on( 'change', function( event ) {
+        console.log('Ra Changed '+nc);
+        Draw(paper,dim,rad)
+      });
+      $( "#range-1b" ).on( 'change', function( event ) {
+        console.log('Rb Changed '+nc);
+        Draw(paper,dim,rad)
+      });
+
+      $( "#proj0" ).on( 'change', function( event ) {
+        console.log('PP Changed '+nc);
+        Draw(paper,dim,rad)
+      });
+      $( "#proj1" ).on( 'change', function( event ) {
+        console.log('OP Changed '+nc);
+        Draw(paper,dim,rad)
+      });
+
+      $( "#cira" ).on( 'change', function( event ) {
+        console.log('Cira Changed '+$( "#cira" ).val());
+        Draw(paper,dim,rad)
+      });
+
+      $( "#dithered" ).on( 'change', function( event ) {
+        console.log('DI Changed '+nc);
+        Draw(paper,dim,rad)
+      });
+      $( "#shuffled" ).on( 'change', function( event ) {
+        console.log('RN Changed '+nc);
+        Draw(paper,dim,rad)
+      });
+
+
+      $( "#sv" ).on( 'click', function( event ) {
+        console.log('Clicked '+nc);
+        Draw(paper,dim,rad);
+
+        //var svg = paper.toSVG();
+
+        //document.getElementById('bar').innerHTML = svg;
+
+      });
+
+
+    });
+  </script>
+
+
+
+    <div align="center" data-role="footer">
+      Provided by LCAV@EPFL
+    </div>
+
+
+
+
+</body>
