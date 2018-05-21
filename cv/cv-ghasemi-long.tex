@@ -1,0 +1,323 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+
+
+% moderncv themes
+\moderncvstyle{banking}                             % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Alireza}{Ghasemi}
+%\title{Resumé title}                               % optional, remove / comment the line if not wanted
+\address{}{Lausanne}{Switzerland}% optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+\phone[mobile]{+41~(78)~677~5131}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
+\phone[fixed]{+41~(21)~693~1371}
+%\phone[fax]{+3~(456)~789~012}
+\email{alireza.ghasemi@epfl.ch}                               % optional, remove / comment the line if not wanted
+\homepage{aghasemi.github.io}                         % optional, remove / comment the line if not wanted
+\social[linkedin]{ghasemialireza}                        % optional, remove / comment the line if not wanted
+\social[twitter]{a\_ghasemi}                             % optional, remove / comment the line if not wanted
+\social[github]{aghasemi}                              % optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+\photo[64pt][0.4pt]{picture.jpg}                       % optional, remove / 
+%\includegraphics[height=64pt]{picture.jpg}
+%comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%---------------------------------------------------------------------------------
+
+\makeatletter
+\@ifpackageloaded{moderncvstylebanking}{%
+	\let\oldmakecvtitle\makecvtitle
+	\renewcommand*{\makecvtitle}{%
+		{\centering\framebox{\includegraphics[width=\@photowidth]{\@photo}}\par\vspace{10pt}}%
+		\oldmakecvtitle%
+	}%
+}{%
+}
+\makeatother
+
+
+
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+%\vspace*{-20pt}
+\makecvtitle
+\section{Research Interests}
+\cvitem{Computer Vision and Image Processing}{Image Retrieval and Localization, Multi-Camera Reconstruction, Tracking, Video Processing, Computational Photography, Augmented  Reality.}
+\cvitem{Machine Learning and Pattern Recognition}{Semi-Supervised  and  Active  Learning,  One-Class Learning, Multi-view Learning, Human Computation.}
+\cvitem{Information Retrieval, Data Mining and Big Data}{Text Classification, Rank and Metric Learning, Sentiment Analysis.}
+
+\section{Education}
+\cventry{September 2011 -- Present}{PhD}{ \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne}{Lausanne, Switzerland}{Computer and Communication Sciences}{Granted doctoral fellowship by the school of computer and communication sciences. Supervised by Professor Martin Vetterli and Dr. Adam James Scholefield. }  % arguments 3 to 6 can be left empty
+\cventry{September 2009 -- August 2011}{M.Sc.}{Sharif Univeristy of Technology}{Tehran, Iran}{\textit{Artificial Intelligence}}{Ranked $1^{st}$ by GPA (${19.52}/{20}$) among the class of 2011. Supervised by Professor M.T. Manzuri.}
+\cventry{September 2005 -- September 2009}{B.Sc.}{Sharif Univeristy of Technology}{Tehran, Iran}{\textit{Software Engineering}}{}
+
+%\section{Master thesis}
+%\cvitem{title}{\emph{Title}}
+%\cvitem{supervisors}{Supervisors}
+%\cvitem{description}{Short thesis abstract}
+\clearpage
+\section{Professional Experience}
+%\subsection{Vocational}
+\cventry{January 2012 -- Present}{Doctoral Researcher}{ \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne}{Lausanne, Switzerland}{}{In charge for cutting-edge research in the areas of computational photography, multi-camera systems and image-based indoor localization. I develop mainly in MATLAB and Java with JavaScript for visualization and Python for scripting.\newline{}%
+\begin{itemize}%
+\item Developed a patent and a track record of publications in light-field image retrieval and video analysis. 
+\item Proposed the first publicly-available dataset for light-field object recognition.
+\item Participating as an R\&D engineer in the development of an outdoor urban localization system.
+\item Developed a novel online game (using Play! and RESTful services) to exploit human computation paradigms in sentiment analysis.
+\end{itemize}}
+
+\cventry{September 2011 -- January 2012}{Doctoral Assistant}{AI Lab - \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne}{Lausanne, Switzerland}{}{I was in charge for investigating novel solutions to incorporate the active learning framework into the recently proposed human computation paradigm. I developed a novel online game in Java (using the Play! framework and RESTful services) to exploit human computation paradigms in sentiment analysis. % I implemented and tested the game with success and published a paper about it.	
+}
+
+\cventry{March 2010 -- August 2011}{Research Assistant}{DSP Lab - Sharif University of Technology}{Tehran, Iran}{}{In charge for development of innovative approaches for exploiting user feedback to improve the underlying machine learning model in an image retrieval system. I used MATLAB and Java to develop the system.}
+\begin{itemize}
+	\item Developed a novel robust one-class classification framework and added active and semi-supervised learning capability to the well-known Support Vector Data Description (SVDD) model. % to use in image retrieval among other applications.
+	%\begin{itemize}
+		%\item Showed that the proposed framework is a generalization of the well-known Support Vector Data Description (SVDD) algorithm.
+		%\item 
+		%\item Incorporated Active Learning into the model.
+	%\end{itemize}
+\end{itemize}
+
+%\subsection{Miscellaneous}
+\cventry{October 2009 -- March 2010}{Web Developer}{Intelligent Information Systems (IIS) Laboratory}{Tehran, Iran}{}{Database and web developer (PHP/Java) for a national-level enterprise project management system.}
+\cventry{May 2009 -- October 2009}{Backend Service Developer}{Peykasa Messageware Group}{Tehran, Iran}{}{Backend developer in an integrated messaging platform. I developed in JavaEE, GWT and AJAX.}
+\cventry{January 2009 -- May 2009}{R\&D Assistant}{Semantic Web Research Lab - Sharif University of Technology }{Tehran, Iran}{}{Developer of an intelligent system (in Java) to categorise websites exploiting their internal link structure.}
+\cventry{June 2008 -- September 2008}{Software Engineering Intern}{Mabna Software}{Tehran, Iran}{}{R\&D engineer and analyst for the Pars statistical machine translation in Java and C\#.}
+
+\section{Teaching Experience}
+
+\cventry{Spring 2014}{Teaching Assistant for the online course offered on the Coursera platform.}{Digital Signal Processing}{Lausanne, Switzerland}{}{Instructed by Dr. Paolo Prandoni and Professor Martin Vetterli.}
+
+\cventry{Fall 2013}{Teaching Assistant at \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne}{Mathematical Foundations of Signal Processing}{Lausanne, Switzerland}{}{Instructed by Dr. Jayakrishnan Unnikrishnan, Dr. Mihailo Kolundzija and Professor Martin Vetterli.}
+
+\cventry{Spring 2013}{Teaching Assistant at \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne}{Statistical Signal Processing}{Lausanne, Switzerland}{}{Instructed by Dr. Andrea Ridolfi, Dr. Mihailo Kolundzija and Dr. Ivana Jovanovic.}
+
+\cventry{Fall 2012}{Teaching Assistant at \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne}{Introduction to Programming (Informatiue I)}{Lausanne, Switzerland}{}{Instructed by Dr. Jean-Philippe Pellet}
+
+\cventry{Fall 2011}{Teaching Assistant at Sharif University of Technology}{Statistical Pattern Recognition}{Tehran, Iran}{}{}
+
+\cventry{Spring 2009 - Spring 2010}{Teaching Assistant at Sharif University of Technology}{Introduction to Database Design}{Tehran, Iran}{}{}
+
+\cventry{Spring 2009 - Spring 2010}{Teaching Assistant at Shahid Beheshti University}{Introduction to Database Design}{Tehran, Iran}{}{}
+
+\cventry{Fall 2009}{Lecturer at Payam-e-Noor University of Qeshm
+}{Advanced Programming}{Qeshm, Iran}{}{}
+
+\cventry{Fall 2006}{Teaching Assistant at Sharif University of Technology}{Introduction to Programming}{Tehran, Iran}{}{}
+
+
+\section{Patents}
+
+\cvitem{Method and Apparatus for Identifying Local Features}{\textit{Alireza Ghasemi}; Laurent Rime; Martin Vetterli, Swiss Patent No. 2013CH-1102, Filed June 2013.}
+\cvitem{Distinguishing Real Scenes from Printed Photos Using a Light-Field Camera}{\textit{Alireza Ghasemi}; Laurent Rime; Martin Vetterli, US-61898739, Provisional Patent Filed November 2013. }
+
+
+\section{Publications}
+%\vspace*{10pt}
+%\subsection{Vocational}
+%\cventry{}{}{\large Patents}{}{}{}
+%{
+%\vspace*{5pt}
+%}
+%\cventry{}{}{\large Papers}{}{}{}
+
+\cvitem{On the Accuracy of Point Localisation in a Circular Camera Array}{\textit{Alireza Ghasemi}; Adam Scholefield and Martin Vetterli, IEEE ICIP 2015. Quebec City, Canada (\emph{Selected as Top 10 \%})}
+
+\cvitem{Detecting Planar Surface Using a Light-Field Camera with Applications to Distinguishing Real Scenes From Printed Photos}{\textit{Alireza Ghasemi} and Martin Vetterli, ICASSP 2014, Florence, Italy.}
+\cvitem{Scale-Invariant Representation of Light Field Images for Object Recognition and Tracking}{\textit{Alireza Ghasemi} and Martin Vetterli, IS\&T/SPIE Electronic Imaging 2014, San Francisco, USA.}
+
+
+
+\cvitem{Computationally Efficient Background Subtraction in the Light Field Domain}{\textit{Alireza Ghasemi}; Mahdad Hosseini Kamal  and Martin Vetterli, IS\&T/SPIE Electronic Imaging 2014, San Francisco, California, USA, February 2-6, 2014.}
+
+\cvitem{LCAV-31: A Dataset for Light Field Object Recognition}{\textit{Alireza Ghasemi}; Nelly Afonso  and Martin Vetterli,  IS\&T/SPIE Electronic Imaging 2014, San Francisco, California, USA, February 2-6, 2014.}
+
+\cvitem{Sentiment Analysis Using a Novel Human Computation Game}{Claudiu Cristian Musat; \textit{Alireza Ghasemi} and Boi Faltings, ACL 2012 People's Web Meets NLP Workshop, 2012.}
+
+\cvitem{A Bayesian Approach to the Data Description Problem}{\textit{Alireza Ghasemi} et. al.,  AAAI Twenty-Sixth Conference on Artificial Intelligence (AAAI-12), 2012}
+
+\cvitem{Support Vector Data Description for Spoken Digit Recognition}{Amirhossein Tavanaei; \textit{ Alireza Ghasemi}; Mohammad Tavanaei; Hossein Sameti and Mohammad T. Manzuri, International Conference on Bio-inspired Systems and Signal Processing (BIOSIGNALS 2012), 2012:32-37.}
+
+
+\cvitem{ Active Learning from Positive and Unlabeled Data}{\textit{Alireza Ghasemi}; Hamid R. Rabiee; Mohsen Fadaee; Mohammad T. Manzuri; Mohammad H. Rohban, IEEE ICDM 2011 Workshop on Optimization Based Methods for Emerging Data Mining Problems (OEDM'11), 2011:244-250.}
+
+\cvitem{Active One-Class Learning by Kernel Density Estimation}{\textit{Alireza Ghasemi}; Mohammad T. Manzuri; Hamid R. Rabiee; Mohammad H. Rohban and Siavash Haghiri, IEEE International Workshop on Machine Learning for Signal Processing (MLSP'11), 2011:1-6.}
+
+\cvitem{Content-Based Image Retrieval Using Relevance Feedback and Semi-Supervised Learning}{\textit{Alireza Ghasemi} and M. T. Manzuri (Dir.), M. Sc. Thesis, Summer 2011.}
+\cvitem{A Survey on Website Classification Methods with Introduction to a  New Method Based on Internal PageRanks}{\textit{Alireza Ghasemi}, Hassan Abolhassani (Dir.), B.Sc. Thesis, Summer 2009.} 
+%\cventry{}{}{\large Theses}{}{}{}
+%{
+%\begin{itemize}
+%\item \emph{Feature Identification and Tracking in the Plenoptic Space}, Candidacy Report for the Doctoral Program in Computer and Communication Systems, Under Supervision of Prof. Martin Vetterli, Summer 2012.
+%\vspace*{10pt}
+%\end{itemize}
+%}
+
+%\cventry{}{}{\large Poster Presentations}{}{}{}
+%{
+%\begin{itemize}
+%	\item \textbf{Alireza Ghasemi}, Julien Lalande, Laurent Rime, Martin Vetterli, \textit{Light-Field/Plenoptic Image Processing - Principles}.  Research Day of the EPFL School of Computer and Communication Sciences, June 2014. %\footnote{Poster available at \url{http://ics.epfl.ch/EDIC/down.asp?ID=1102&PID=1087}}
+%	\item \textbf{Alireza Ghasemi}, Julien Lalande, Laurent Rime, Martin Vetterli, \textit{Light-Field/Plenoptic Image Processing - Applications}.  Research Day of the EPFL School of Computer and Communication Sciences, June 2014. \vspace*{10pt}%\footnote{Poster available at \url{http://ics.epfl.ch/EDIC/down.asp?ID=1103&PID=1050}}
+%\end{itemize}
+%}
+\section{Honors and Awards}
+\cventry{Spring 2015}{Granted the IEEE SPS Travel Grant to attend the conference ICIP 2015.}{IEEE Signal Processing Society Travel Grant}{Lausanne, Switzerland}{}{}
+
+\cventry{Spring 2015}{Winner of the prestigious Qualcomm Innovation Fellowship (QInF'15).}{Qualcomm Innovation Fellowship 2015}{Lausanne, Switzerland}{}{}
+
+\cventry{Fall 2011}{Granted full one-year fellowship to start PhD.}{Doctoral Fellowship from the I\&C School of EPFL}{Lausanne, Switzerland}{}{}
+
+\cventry{Summer 2011}{Ranked by GPA.}{Ranked 1st in the Artificial Intelligence section of the Sharif University}{Tehran, Iran}{}{}
+
+%\cventry{Spring 2015}{Granted the Masters.}{IEEE Signal Processing Society Travel Grant}{Lausanne, Switzerland}{}{}
+
+\cventry{Summer 2009}{Among more than 13,000 students.}{Ranked 1st in the nationwide graduate entrance exam in IT engineering}{Tehran, Iran}{}{}
+
+%\cventry{Summer 2009}{Among more than 17,000 students.}{Ranked 1st in the nationwide graduate entrance exam in Artificial Intelligence}{Tehran, Iran}{}{}
+
+\cventry{Summer 2009}{Among more than 17,000 students. Computer Architecture and AI sections.}{Ranked 1st in the national graduate entrance exam in computer engineering}{Tehran, Iran}{}{}
+
+\cventry{Summer 2005}{Among more than 300,000 students in the Mathematics branch.}{Ranked 183rd (top 0.06\%) in the nationwide university entrance exam}{Tehran, Iran}{}{}
+
+\cventry{Summer 2005}{Among more than 500,000 students in the Foreign Languages branch.}{Ranked 33rd (top 0.006\%) in the nationwide university entrance exam}{Tehran, Iran}{}{}
+%\cventry{Fall 2011}{{ }{}{}  % arguments 3 to 6 can be left empty
+
+
+
+\section{Selected Courses}
+\vspace*{10pt}
+%\subsection{Vocational}
+\cvitem{Doctoral School}{Foundations of Imaging Sciences ($6/6$), Convex Optimization ($5.5/6$), Statistical Signal Processing ($5.5/6$).}
+
+\cvitem{Graduate School}{Image Processing ($19.2/20$), Speech Processing ($19/20$), Machine Learning ($19.2/20$), Pattern Recognition ($19.5/20$), Human and Computer Vision ($20/20$).}
+
+\cvitem{Undergraduate}{Database Systems ($18.5/20$), Object-Oriented Design ($18.8/20$), System Analysis and Design ($20/20$), Software Engineering ($19/20$), Information Retrieval ($20/20$), Computer Networks ($19.2/20$), Compiler Design ($20/20$), Programming Languages ($20/20$).}
+
+\section{Skills}
+\cvdoubleitem{Java Development}{Expert. In-depth knowledge of  JavaSE, JavaFX, Swing, JDBC, Weka, etc. Working knowledge in Android development}{MATLAB}{Proficient in Signal and Image Processing, Computer Vision and Pattern Recognition toolboxes.}
+
+\cvdoubleitem{JavaScript}{Experienced in Node.js, Chrome extensions, frameworks, client-side scripting, etc.}{Python}{Experiences in Blender scripting, NumPy and SciPy, IPython Notebooks.}
+
+\cvdoubleitem{C}{Experiences with OpenCV and Win32 API.}{Typesetting}{Fluent in \LaTeX.}
+\cvdoubleitem{Web Development}{Experiences in REST, Symfony, Spring MVC, Play!, GWT, Grails, etc.}{Database Design}{Experiences in SQL, ERD, NoSQL (MongoDB, Firebase).}
+
+\cvdoubleitem{Operating Systems}{Linux (Debian, Fedora, Ubuntu), Windows.}{Cloud Development}{Google App Engine, Heroku, IaaS, Meteor.}
+
+\cvdoubleitem{Software Engineering}{OOD, UML, Agile methodologies, Scrum, Design Patterns.}{Other Programming Languages}{Experiences in Clojure, R and Scala.}
+\section{Languages}
+\cvitemwithcomment{Persian}{Native}{}
+\cvitemwithcomment{English}{Full professional proficiency}{Used extensively in study and work. C1 level.}
+\cvitemwithcomment{French}{Limited working proficiency}{Learning since 2012. Currently in B1 level.}
+\cvitemwithcomment{German}{Limited working proficiency}{Learning since 2013. Currently in A2 level.}
+\cvitemwithcomment{Arabic}{Elementary proficiency}{Learned basics in high school. }
+
+%\section{Selected Courses}
+%Software Engineering, Object-Oriented Analysis and Design, Database Design, Machine Learning, Pattern Recognition, Image Processing, Computer Vision, Statistical Signal Processing, Mathematical Signal Processing, Speech Processing,$\dots$
+%\cventry{}{Granted full one-year fellowship to start PhD.}{}{}{}{}
+%\cventry{Summer 2011}{Ranked by GPA.}{Rank 1st in the Artificial Intelligence section of the Sharif University}{Tehran, Iran}{}{}
+%\cventry{Summer 2009}{Among more than 17,000 students.}{Rank 1st in the nationwide graduate entrance exam in IT engineering}{Tehran, Iran}{}{}
+%\cventry{Summer 2005}{Among more than 300,000 students in the Mathematics branch.}{Rank 183rd (top \%0.06) in the nationwide university entrance exam}{Tehran, Iran}{}{}
+
+
+\section{Interests}
+%\cvitem{Reading}{Literature, History, Technology. Gaining general knowledge through reading about different topics of interest from historical analyses to technology reviews}
+%\cvitem{Walking}{Sight-seeing, Photography}
+\cvitem{Reading}{Literature, History, Technology. Gaining general knowledge through studying novel topics.
+}% about different topics of interest from historical analyses to technology reviews
+%\cvitem{Knowing}{Gaining general knowledge through reading about different topics of interest from historical analyses to technology reviews}
+%
+%\section{Extra 1}
+%\cvlistitem{Item 1}
+%\cvlistitem{Item 2}
+%\cvlistitem{Item 3. This item is particularly long and therefore normally spans over several lines. Did you notice the indentation when the line wraps?}
+%
+%\section{Extra 2}
+%\cvlistdoubleitem{Item 1}{Item 4}
+%\cvlistdoubleitem{Item 2}{Item 5\cite{book1}}
+%\cvlistdoubleitem{Item 3}{Item 6. Like item 3 in the single column list before, this item is particularly long to wrap over several lines.}
+
+\section{References}
+Available upon request
+%\begin{cvcolumns}
+%  \cvcolumn{Category 1}{\begin{itemize}\item Person 1\item Person 2\item Person 3\end{itemize}}
+%  \cvcolumn{Category 2}{Amongst others:\begin{itemize}\item Person 1, and\item Person 2\end{itemize}(more upon request)}
+%  \cvcolumn[0.5]{All the rest \& some more}{\textit{That} person, and \textbf{those} also (all available upon request).}
+%\end{cvcolumns}
+
+% Publications from a BibTeX file without multibib
+%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
+%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{publications}                        % 'publications' is the name of a BibTeX file
+
+% Publications from a BibTeX file using the multibib package
+%\section{Publications}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
+%
+%\clearpage
+%-----       letter       ---------------------------------------------------------
+% recipient data
+%\recipient{Company Recruitment team}{Company, Inc.\\123 somestreet\\some city}
+%\date{January 01, 1984}
+%\opening{Dear Sir or Madam,}
+%\closing{Yours faithfully,}
+%\enclosure[Attached]{curriculum vit\ae{}}          % use an optional argument to use a string other than "Enclosure", or redefine \enclname
+%\makelettertitle
+%
+%Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper neque sit amet lectus facilisis sed luctus nisl iaculis. Vivamus at neque arcu, sed tempor quam. Curabitur pharetra tincidunt tincidunt. Morbi volutpat feugiat mauris, quis tempor neque vehicula volutpat. Duis tristique justo vel massa fermentum accumsan. Mauris ante elit, feugiat vestibulum tempor eget, eleifend ac ipsum. Donec scelerisque lobortis ipsum eu vestibulum. Pellentesque vel massa at felis accumsan rhoncus.
+%
+%Suspendisse commodo, massa eu congue tincidunt, elit mauris pellentesque orci, cursus tempor odio nisl euismod augue. Aliquam adipiscing nibh ut odio sodales et pulvinar tortor laoreet. Mauris a accumsan ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse vulputate sem vehicula ipsum varius nec tempus dui dapibus. Phasellus et est urna, ut auctor erat. Sed tincidunt odio id odio aliquam mattis. Donec sapien nulla, feugiat eget adipiscing sit amet, lacinia ut dolor. Phasellus tincidunt, leo a fringilla consectetur, felis diam aliquam urna, vitae aliquet lectus orci nec velit. Vivamus dapibus varius blandit.
+%
+%Duis sit amet magna ante, at sodales diam. Aenean consectetur porta risus et sagittis. Ut interdum, enim varius pellentesque tincidunt, magna libero sodales tortor, ut fermentum nunc metus a ante. Vivamus odio leo, tincidunt eu luctus ut, sollicitudin sit amet metus. Nunc sed orci lectus. Ut sodales magna sed velit volutpat sit amet pulvinar diam venenatis.
+%
+%Albert Einstein discovered that $e=mc^2$ in 1905.
+%
+%\[ e=\lim_{n \to \infty} \left(1+\frac{1}{n}\right)^n \]
+%
+%\makeletterclosing
+%
+%\clearpage\end{CJK*}                              % if you are typesetting your resume in Chinese using CJK; the \clearpage is required for fancyhdr to work correctly with CJK, though it kills the page numbering by making \lastpage undefined
+\end{document}
+
+
+%% end of file `template.tex'.
